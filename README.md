@@ -8,9 +8,8 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Built-In Roles & Users](#built-in-roles--users)
 - [Configuration](#configuration)
-- [License](#license)
+
 
 ---
 
@@ -72,9 +71,160 @@ A Task Management System built with Spring Boot, leveraging JPA for data persist
 
   Once the application is running, it will be accessible at http://localhost:8080.
 
+## Configuration
+
+To run the application, ensure the following configurations are set in your `application.properties` file:
+
+### Application Properties
+    spring.application.name=Task Management System
+    
+    spring.datasource.url=jdbc:postgresql://<HOST>:<PORT>/<DATABASE_NAME>
+    spring.datasource.username=<DATABASE_USERNAME>
+    spring.datasource.password=<DATABASE_PASSWORD>
+    spring.datasource.driver-class-name=org.postgresql.Driver
+    
+    spring.jpa.hibernate.ddl-auto=create
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+    
+    api.prefix=/api/v1
+    
+    auth.token.expirationInMils=<TOKEN_EXPIRATION_IN_MILLISECONDS>
+    auth.token.jwtSecret=<JWT_SECRET_KEY>
+    
+    spring.mail.host=smtp.gmail.com
+    spring.mail.port=587
+    spring.mail.username=<EMAIL_ADDRESS>
+    spring.mail.password=<EMAIL_PASSWORD>
+    spring.mail.protocol=smtp
+    spring.mail.properties.mail.smtp.auth=true
+    spring.mail.properties.mail.smtp.starttls.enable=true
+
+
 ### Usage
   Access API:
+    # API Endpoints
 
-### Configuration
+## Task Management
+
+### Get Task By ID
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/{id}`
+
+### Get Upcoming Tasks
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/Notify-Upcoming-Tasks?fromDate={fromDate}&toDate={toDate}`
+
+### Search Tasks by Title
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/search/title?title={title}`
+
+### Search Tasks by Status
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/search/status?status={status}`
+
+### Search Tasks by Description
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/search/description?description={description}`
+
+### Search Tasks by Due Date
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/search/due-date?dueDate={dueDate}`
+
+### Update Task By ID
+- **Method:** `PUT`
+- **URL:** `http://localhost:8080/api/v1/tasks/{id}`
+
+### Delete Task By ID
+- **Method:** `DELETE`
+- **URL:** `http://localhost:8080/api/v1/tasks/{id}`
+
+### Get All Tasks
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks`
+
+### Create Task
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/api/v1/tasks`
+
+### Mark Task as Complete
+- **Method:** `PATCH`
+- **URL:** `http://localhost:8080/api/v1/tasks/{id}/complete`
+
+### Mark Task as In Progress
+- **Method:** `PATCH`
+- **URL:** `http://localhost:8080/api/v1/tasks/{id}/in_progress`
+
+## History
+
+### Create History
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/api/v1/history/{id}`
+
+### Get History By ID
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/history/{id}`
+
+### Get Task History
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/tasks/history/{taskId}`
+
+### Update History By ID
+- **Method:** `PUT`
+- **URL:** `http://localhost:8080/api/v1/history/{id}`
+
+### Delete History By ID
+- **Method:** `DELETE`
+- **URL:** `http://localhost:8080/api/v1/history/{id}`
+
+## Notifications
+
+### Create Notification
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/api/notifications/task/{taskId}`
+
+### Get Notification By ID
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/notifications/{id}`
+
+### Get Task Notifications
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/notifications/task/{taskId}`
+
+### Update Notification
+- **Method:** `PUT`
+- **URL:** `http://localhost:8080/api/notifications/{id}`
+
+### Delete Notification
+- **Method:** `DELETE`
+- **URL:** `http://localhost:8080/api/notifications/{id}`
+
+## User Management
+
+### Create User
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/api/v1/users/add`
+
+### Sign Up
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/api/v1/users/sign-up`
+
+### Update User
+- **Method:** `PUT`
+- **URL:** `http://localhost:8080/api/v1/users/{id}`
+
+### Delete User
+- **Method:** `DELETE`
+- **URL:** `http://localhost:8080/api/v1/users/{id}`
+
+### Get User By ID
+- **Method:** `GET`
+- **URL:** `http://localhost:8080/api/v1/users/{id}`
+
+### Login
+- **Method:** `POST`
+- **URL:** `http://localhost:8080/api/v1/auth/login`
+
+
+
 
 
